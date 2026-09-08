@@ -180,8 +180,7 @@ object AuthApp {
                     svg.path(svg.d := "M9 5l7 7-7 7")
                   ),
                   onClick --> { _ =>
-                    // ゲストとして初期化（必要に応じてAuthStorageをクリア）
-                    AuthStorage.logout()
+                    AuthStorage.clearAuth()
                     dom.window.location.href = "/home"
                   }
                 )

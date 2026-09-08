@@ -36,6 +36,6 @@ test.describe("sign-up validation", () => {
     await page.getByRole("button", { name: "アカウント作成" }).click();
 
     await expect(page.getByRole("heading", { name: "エラー" })).toBeVisible();
-    await expect(page.getByText("パスワードは6文字以上で入力してください")).toBeVisible();
+    await expect(page.getByText("パスワードは8文字以上で入力してください")).toBeVisible();
   });
 });

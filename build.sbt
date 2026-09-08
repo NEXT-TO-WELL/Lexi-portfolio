@@ -66,7 +66,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % "6.2.0",
       "org.playframework" %% "play-slick-evolutions" % "6.2.0",
-      "com.mysql" % "mysql-connector-j" % "9.5.0",
+      "com.mysql" % "mysql-connector-j" % "26.7.0",
       "com.lihaoyi" %%% "upickle" % "4.4.2",
       "com.github.jwt-scala" %% "jwt-play" % "11.0.3",
       "nl.martijndwars" % "web-push" % "5.1.2",

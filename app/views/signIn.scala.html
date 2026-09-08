@@ -1,0 +1,23 @@
+@()(implicit flash: Flash, request: RequestHeader)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Lexi</title>
+    <meta name="csrf-token" content="@play.filters.csrf.CSRF.getToken.map(_.value).getOrElse("")">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="@utils.AssetUrl.versioned("stylesheets/main.css")">
+    <link rel="icon" type="image/svg+xml" href="@routes.Assets.at("images/lexi-symbol.svg")">
+    <link rel="manifest" href="@routes.Assets.at("manifest.json")">
+    <link rel="apple-touch-icon" href="@routes.Assets.at("images/icon-192.png")">
+</head>
+<body>
+<div id="signIn-app"></div>
+
+@* CSRFトークンをJSから取得できるように隠し要素で置いておく *@
+<!--<input type="hidden" id="csrfToken" value="@play.filters.csrf.CSRF.getToken.map(_.value)">-->
+
+<script src="@utils.AssetUrl.versioned("javascripts/auth/main.js")"></script>
+</body>
+</html>

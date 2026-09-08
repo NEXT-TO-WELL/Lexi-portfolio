@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@source "./frontend/general/src/**/*.scala";
+@source "./frontend/auth/src/**/*.scala";
+@source "./frontend/manager/src/**/*.scala";
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+    scrollbar-color: #cbd5e1 #f8fafc;
+  }
+
+  html,
+  body {
+    background-color: #f8fafc;
+    color: #1f2937;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html,
+    body {
+      background-color: #020617;
+      color: #f3f4f6;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      scrollbar-color: #475569 #020617;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f8fafc;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border: 2px solid #f8fafc;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #475569;
+      border-color: #020617;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+  }
+}

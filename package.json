@@ -1,0 +1,28 @@
+{
+  "name": "lexi-build-tools",
+  "private": true,
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "scripts": {
+    "assets:build": "sbt -batch frontend/fastLinkJS auth/fastLinkJS manager/fastLinkJS && npm run css:build",
+    "dev": "npm run assets:build && sbt run",
+    "format": "sbt -batch scalafmtAll frontend/scalafmtAll auth/scalafmtAll manager/scalafmtAll scalafmtSbt",
+    "format:check": "sbt -batch scalafmtCheckAll frontend/scalafmtCheckAll auth/scalafmtCheckAll manager/scalafmtCheckAll scalafmtSbtCheck",
+    "lint": "sbt -batch scalafix frontend/scalafix auth/scalafix manager/scalafix",
+    "lint:check": "sbt -batch 'scalafix --check' 'frontend/scalafix --check' 'auth/scalafix --check' 'manager/scalafix --check'",
+    "e2e:install": "playwright install chromium",
+    "e2e:server": "sbt -Dconfig.resource=application.test.conf -Dhttp.port=9001 run",
+    "e2e": "npm run assets:build && playwright test",
+    "e2e:ui": "npm run assets:build && playwright test --ui",
+    "css:build": "tailwindcss -i ./input.css -o ./public/stylesheets/main.css",
+    "css:watch": "tailwindcss -i ./input.css -o ./public/stylesheets/main.css --watch",
+    "css:build:production": "tailwindcss -i ./input.css -o ./public/stylesheets/main.css --minify"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@tailwindcss/cli": "4.1.18",
+    "mysql2": "^3.24.3",
+    "tailwindcss": "4.1.18"
+  }
+}

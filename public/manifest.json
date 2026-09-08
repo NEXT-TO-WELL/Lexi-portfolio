@@ -1,0 +1,27 @@
+{
+  "name": "Lexi - 社会派辞書SNS",
+  "short_name": "Lexi",
+  "description": "みんなで育てる社会派辞書SNS",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#17324d",
+  "icons": [
+    {
+      "src": "/assets/images/lexi-symbol.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 88" role="img" aria-labelledby="title description">
+  <title id="title">Lexi</title>
+  <desc id="description">The Lexi wordmark</desc>
+  <style>
+    .wordmark { fill: #17324d; }
+    @media (prefers-color-scheme: dark) {
+      .wordmark { fill: #f3f6fa; }
+    }
+  </style>
+  <text
+    class="wordmark"
+    x="6"
+    y="61"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="61"
+    font-weight="700"
+    letter-spacing="-2.5"
+  >Lexi</text>
+  <path d="M8 72h154" fill="none" stroke="#e47a46" stroke-linecap="round" stroke-width="3"/>
+  <circle cx="171" cy="72" r="3" fill="#e47a46"/>
+</svg>

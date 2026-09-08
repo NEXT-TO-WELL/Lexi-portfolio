@@ -1,0 +1,29 @@
+@*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ *@
+@(title: String)(content: Html)(implicit request: RequestHeader)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @* Here's where we render the page title `String`. *@
+        <title>@title</title>
+        <meta name="csrf-token" content="@play.filters.csrf.CSRF.getToken.map(_.value).getOrElse("")">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" media="screen" href="@utils.AssetUrl.versioned("stylesheets/main.css")">
+        <link rel="icon" type="image/svg+xml" href="@routes.Assets.at("images/lexi-symbol.svg")">
+        <link rel="manifest" href="@routes.Assets.at("manifest.json")">
+        <link rel="apple-touch-icon" href="@routes.Assets.at("images/icon-192.png")">
+    </head>
+    <body>
+        @* And here's where we render the `Html` object containing
+         * the page content. *@
+        @content
+
+      <script src="@utils.AssetUrl.versioned("javascripts/main/main.js")" type="text/javascript"></script>
+    </body>
+</html>

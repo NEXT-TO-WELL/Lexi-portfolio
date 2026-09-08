@@ -1,0 +1,118 @@
+# Authentication
+GET     /health                         controllers.HealthController.check()
+GET     /signIn                         controllers.AuthController.signInIndex()
+POST    /api/signIn                     controllers.AuthController.signIn()
+POST    /api/admin/signIn               controllers.AuthController.adminSignIn()
+POST    /api/admin/logout               controllers.AuthController.adminLogout()
+POST    /api/signUp                     controllers.AuthController.signUp()
+POST    /api/logout                     controllers.AuthController.logout()
+
+# Manager
+GET     /manager                        controllers.ManagerController.index()
+GET     /manager/users                  controllers.ManagerController.recentUsers(limit: Option[Int] ?= None, offset: Option[Int] ?= None)
+
+# Static assets
+GET     /service-worker.js              controllers.Assets.at(path="/public", file="service-worker.js")
+GET     /assets/*file                   controllers.Assets.at(path="/public", file)
+
+# Read: trends
+GET     /trends                          controllers.TrendController.getTrends
+
+# Read: words
+GET     /words                           controllers.WordController.findWordsByKeyword(keyword: Option[String], wordId: Option[Long], tagId: Option[Long])
+GET     /words/:wordId/:tagId/details    controllers.WordController.findWordTagDetail(wordId: Long, tagId: Long)
+GET     /words/:wordId/:tagId/meanings   controllers.WordController.findMeanings(wordId: Long, tagId: Long)
+GET     /words/:wordId/:tagId/meanings/paginated controllers.WordController.findMeaningsPaginated(wordId: Long, tagId: Long, lastId: Option[Long], limit: Option[Int])
+GET     /words/:wordId/:tagId/examples   controllers.WordController.findExamples(wordId: Long, tagId: Long)
+GET     /words/:wordId/:tagId/examples/paginated controllers.WordController.findExamplesPaginated(wordId: Long, tagId: Long, lastId: Option[Long], limit: Option[Int])
+
+# Read: community
+GET     /comments/:threadId              controllers.CommunityController.findThreadDetail(threadId: Long)
+GET     /comments/:threadId/paginated    controllers.CommunityController.findCommentsPaginated(threadId: Long, lastId: Option[Long], limit: Option[Int])
+GET     /threads/:wordId/:tagId/threads  controllers.CommunityController.findThreads(wordId: Long, tagId: Long)
+GET     /threads/:wordId/:tagId/threads/paginated controllers.CommunityController.findThreadsPaginated(wordId: Long, tagId: Long, lastId: Option[Long], limit: Option[Int])
+
+# Read: user and notifications
+GET     /user/profile                   controllers.UserController.getMyProfile
+GET     /user/words                     controllers.UserController.getMyWords
+GET     /user/examples                  controllers.UserController.getMyExamples
+GET     /user/meanings                  controllers.UserController.getMyMeanings
+GET     /user/favorites/meanings        controllers.UserController.getMyFavoriteMeanings
+GET     /user/favorites/examples        controllers.UserController.getMyFavoriteExamples
+GET     /user/reactions/meanings        controllers.UserController.getMyReactedMeanings
+GET     /user/reactions/examples        controllers.UserController.getMyReactedExamples
+GET     /user/comments                  controllers.UserController.getMyComments
+GET     /user/threads                   controllers.UserController.getMyThreads
+GET     /user/follows/tags              controllers.UserController.getFollowedTags
+GET     /user/follows/words             controllers.UserController.getFollowedWords
+GET     /user/history                   controllers.UserController.getMyHistory
+GET     /notifications                  controllers.NotificationController.getNotifications
+GET     /notifications/status           controllers.NotificationController.getNotificationStatus
+GET     /push/config                    controllers.PushSubscriptionController.config
+GET     /reports/all                    controllers.ReportController.getAllReports(limit: Option[Int] ?= None, offset: Option[Int] ?= None)
+
+# Write: trends
+POST    /trends/update                  controllers.TrendController.updateTrends
+
+# Write: words
++ nocsrf
+POST    /words                          controllers.WordController.postWord
++ nocsrf
+POST    /words/examples                 controllers.WordController.postExample
++ nocsrf
+POST    /words/meanings                 controllers.WordController.postMeaning
+POST    /words/suggest                  controllers.WordController.suggest
+POST    /suggests/words                 controllers.WordController.suggestWords
++ nocsrf
+POST    /suggests/tags                  controllers.WordController.suggestTags
+
+# Write: community
++ nocsrf
+POST    /threads                        controllers.CommunityController.postThread
++ nocsrf
+POST    /comments                       controllers.CommunityController.postComment
++ nocsrf
+POST    /threads/resolve                controllers.CommunityController.resolveThread
+
+# Write: reports and reactions
++ nocsrf
+POST    /reports                        controllers.ReportController.createReport
++ nocsrf
+PUT     /reports/:reportId/status       controllers.ReportController.updateReportStatus(reportId: Long)
++ nocsrf
+POST    /reactions/toggle               controllers.ReactionController.toggle
++ nocsrf
+POST    /reactions/commentToggle        controllers.ReactionController.toggleComment
+
+# Write: user
+POST    /user/favorites/toggle          controllers.UserController.toggleFavorite
+POST    /user/follows/tags              controllers.UserController.followTag
+POST    /user/follows/words/toggle      controllers.UserController.toggleWordFollow
+POST    /user/update-name               controllers.UserController.updateUserName
+POST    /user/update-password           controllers.UserController.updatePassword
+POST    /user/delete-account            controllers.UserController.deleteAccount
+POST    /notifications/:id/read         controllers.NotificationController.markAsRead(id: Long)
+POST    /notifications/read-all         controllers.NotificationController.markAllAsRead
+POST    /push/subscriptions             controllers.PushSubscriptionController.subscribe
+DELETE  /push/subscriptions             controllers.PushSubscriptionController.unsubscribe
+
+# Delete
+DELETE  /words/meanings/:meaningId      controllers.WordController.deleteMeaning(meaningId: Long)
+DELETE  /words/examples/:exampleId      controllers.WordController.deleteExample(exampleId: Long)
+DELETE  /threads/:threadId              controllers.CommunityController.deleteThread(threadId: Long)
+DELETE  /comments/:commentId            controllers.CommunityController.deleteComment(commentId: Long)
+DELETE  /user/follows/:followId         controllers.UserController.unfollow(followId: Long)
+
+# Update
++ nocsrf
+PUT     /words/meanings/:meaningId      controllers.WordController.updateMeaning(meaningId: Long)
++ nocsrf
+PUT     /words/examples/:exampleId      controllers.WordController.updateExample(exampleId: Long)
++ nocsrf
+PUT     /threads/:threadId              controllers.CommunityController.updateThread(threadId: Long)
++ nocsrf
+PUT     /comments/:commentId            controllers.CommunityController.updateComment(commentId: Long)
+
+# SPA entry points. Keep these routes last.
+GET     /                               controllers.HomeController.index(path = "")
+GET     /*path                          controllers.HomeController.index(path: String)

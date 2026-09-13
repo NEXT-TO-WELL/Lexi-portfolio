@@ -20,9 +20,9 @@
     "css:build:production": "tailwindcss -i ./input.css -o ./public/stylesheets/main.css --minify"
   },
   "devDependencies": {
-    "@playwright/test": "^1.62.1",
-    "@tailwindcss/cli": "4.1.18",
-    "mysql2": "^3.24.3",
-    "tailwindcss": "4.1.18"
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/cli": "4.3.3",
+    "mysql2": "^3.24.4",
+    "tailwindcss": "4.3.3"
   }
 }

@@ -33,7 +33,7 @@ lazy val commonSettings = Seq(
     "com.raquo" %%% "laminar" % "17.2.1",
     "com.raquo" %%% "waypoint" % "10.0.0-M1",
     "com.lihaoyi" %%% "upickle" % "4.4.2",
-    "org.apache.pekko" %% "pekko-stream" % "1.4.0"
+    "org.apache.pekko" %% "pekko-stream" % "1.7.1"
   )
 )
 
@@ -70,7 +70,7 @@ lazy val root = (project in file("."))
       "com.lihaoyi" %%% "upickle" % "4.4.2",
       "com.github.jwt-scala" %% "jwt-play" % "11.0.3",
       "nl.martijndwars" % "web-push" % "5.1.2",
-      "org.bouncycastle" % "bcprov-jdk18on" % "1.85.2",
+      "org.bouncycastle" % "bcprov-jdk18on" % "1.86",
       "org.mindrot" % "jbcrypt" % "0.4"
     ),
 

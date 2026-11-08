@@ -70,7 +70,7 @@ lazy val root = (project in file("."))
       "com.lihaoyi" %%% "upickle" % "4.4.2",
       "com.github.jwt-scala" %% "jwt-play" % "11.0.3",
       "nl.martijndwars" % "web-push" % "5.1.2",
-      "org.bouncycastle" % "bcprov-jdk18on" % "1.85.2",
+      "org.bouncycastle" % "bcprov-jdk18on" % "1.86",
       "org.mindrot" % "jbcrypt" % "0.4"
     ),
 
